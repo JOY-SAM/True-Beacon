@@ -1,25 +1,44 @@
 import React from 'react'
 import ReactEcharts from "echarts-for-react"; 
+import PlainCard from './Card';
 
-function Charts() {
+function Charts({data}:any) {
+
+  let price_arr: number[]  = []
+  data.map((val:any)=>{
+      price_arr.push(Math.floor(val.price))
+    })
+    console.log(price_arr);
+  
     const option = {
         xAxis: {
           type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          data: ['30', '35', '40'],
+          
         },
         series: [
           {
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: 'bar'
+            data: price_arr,
+            type: 'line',
+
           }
         ]
       }; 
       
   return (
-    <div> <ReactEcharts option={option} /></div>
+    <PlainCard>
+
+    <div className=' text-gray-300    '>
+      <div>Price</div> 
+       <ReactEcharts option={option} />
+    </div>
+    <div className='text-center pt-0'>days</div>
+    </PlainCard>
+
+
   )
 }
 

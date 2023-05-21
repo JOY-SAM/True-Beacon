@@ -10,7 +10,7 @@ function Header() {
       <div className="max-w-screen-xl flex  items-center justify-between mx-auto p-4">
         <div className="flex items-center md:scale-100  scale-75">
           <Link to="/">
-          <span className="self-center text-4xl  whitespace-nowrap dark:text-white">True Beacon</span>
+          <span className="self-center text-4xl s whitespace-nowrap dark:text-white">True Beacon</span>
           </Link>
 
 

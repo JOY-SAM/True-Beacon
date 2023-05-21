@@ -10,13 +10,13 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Search from './Screen/Search';
 import QueryNFT from './Screen/QueryNFT';
 function App() {
   const queryClient = new QueryClient()
-  axios.defaults.baseURL = 'https://backend-omnify.joysam.me';
+  axios.defaults.baseURL = 'http://localhost:8000/';
 
   return (
+    // Since there is no symbol in CSV it is not implemented
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <Router >
@@ -25,8 +25,9 @@ function App() {
             <Routes>
               <Route path="*" element={<QueryNFT />} />
               <Route path="/" element={<QueryNFT />} />
+              <Route path="/login" element={<QueryNFT />} />
+              <Route path="/sigin" element={<QueryNFT />} />
 
-              <Route path="/search/" element={<Search />} />
 
 
               

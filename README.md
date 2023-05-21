@@ -5,6 +5,10 @@
 
 <br>
 
+>Add csv file in project's root directory
+
+<br>
+
 ```
 cd True-Beacon
 
@@ -17,6 +21,7 @@ pip install -r requirements.txt
 
 python3 manage.py makemigrations
 python3 manage.py migrate
+python3 manage.py runscript load_csv
 python3 manage.py runserver
 
 
