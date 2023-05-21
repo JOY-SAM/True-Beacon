@@ -35,7 +35,7 @@ function Charts({data}:any) {
       <div>Price</div> 
        <ReactEcharts option={option} />
     </div>
-    <div className='text-center pt-0'>days</div>
+    <div className='text-center pt-0'>Days</div>
     </PlainCard>
 
 
