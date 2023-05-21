@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .bg-blur-dark{
+        background-color:rgba(27, 27, 25, 0.4);
+        backdrop-filter: blur(2px);
+    }
+}

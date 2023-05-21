@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from base.views import getAll_Weather, getWeather_of_Location
+from base.views import get_historical_data
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/getAll_Weather/', getAll_Weather),
-    path('api/getWeather_of_Location/<slug:query>/', getWeather_of_Location),
+    path('historical-data/', get_historical_data),
 
+#       - POST user/login
+#       - POST user/register
+    
 ]

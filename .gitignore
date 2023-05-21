@@ -1,1 +1,4 @@
 vEnv/
+historical_prices.csv
+db.sqlite3
+base/migrations
