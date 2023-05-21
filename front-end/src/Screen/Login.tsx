@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import Card from '../Components/Card'
 
-function SignIn() {
+function Login() {
     const [inputs, setInputs] = useState({username:"",password:""})
 
     const handleChange = ( event: React.ChangeEvent<HTMLInputElement> ) => {
@@ -20,10 +20,12 @@ function SignIn() {
       console.log(inputs);
     const handleSubmit = ( event: { preventDefault: () => void } ) => {
         event.preventDefault();
-        axios.post('user/register/', inputs)
+        axios.post('user/login/', inputs)
           .then(function (response) {
             console.log(response);
-            alert("User registered successfully")
+            alert("We have authenticated. We can use JWT in future for authorization")
+            localStorage.setItem("access",response.data.access)
+            // We have authenticated. We can use JWT in future for authorization
           })
           .catch(function (error) {
             alert("Something went wrong")
@@ -34,7 +36,7 @@ function SignIn() {
         <Card>
           <div className="px-6 space-y-4 md:space-y-6 sm:px-4 py-6">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
-                  Sign in to your account
+                  Login to your account
               </h1>
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" action="#">
                   <div>
@@ -55,7 +57,7 @@ function SignIn() {
                           </div>
                       </div>
                   </div>
-                  <button type="submit" className="w-full bg-blue-600 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                  <button type="submit" className="w-full bg-blue-600 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>
               </form>
           </div>
           </Card>
@@ -63,4 +65,4 @@ function SignIn() {
     )
 }
 
-export default SignIn
+export default Login

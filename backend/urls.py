@@ -17,14 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from base.views import get_historical_data
-
+from base.views import create_user, get_historical_data
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('historical-data/', get_historical_data),
-
-#       - POST user/login
-#       - POST user/register
-    
+    path('user/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('user/register/', create_user, name='token_refresh'),
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

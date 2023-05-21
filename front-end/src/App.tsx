@@ -11,6 +11,8 @@ import {
   Route,
 } from "react-router-dom";
 import QueryNFT from './Screen/QueryNFT';
+import SignIn from './Screen/SignIn';
+import Login from './Screen/Login';
 function App() {
   const queryClient = new QueryClient()
   axios.defaults.baseURL = 'http://localhost:8000/';
@@ -25,8 +27,8 @@ function App() {
             <Routes>
               <Route path="*" element={<QueryNFT />} />
               <Route path="/" element={<QueryNFT />} />
-              <Route path="/login" element={<QueryNFT />} />
-              <Route path="/sigin" element={<QueryNFT />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signIn" element={<SignIn />} />
 
 
 

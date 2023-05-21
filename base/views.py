@@ -1,12 +1,13 @@
 from asyncio.log import logger
 import datetime
-from rest_framework import serializers
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.utils.translation import gettext_lazy as _
 
 from base.models import NFT
+from django.contrib.auth.models import User
+from base.serializer import NFT_Serializer
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def Print(val):
 
 @api_view(['GET'])
 def get_historical_data(request):
-    # ! There is no symbol  in CSV
+    # ! There is no symbol  in CSV so not implemented
 
     _from_date  = request.GET.get('from_date','')
     _to_date  = request.GET.get('to_date','')
@@ -35,8 +36,17 @@ def get_historical_data(request):
     return Response(serializer.data)
 
 
-# Serializer implemented  here because projects is small
-class NFT_Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = NFT
-        fields = ['id','date','price','instrument_name']
+
+
+@api_view(['POST'])
+def create_user(request):
+    # We mostly not focusing on security.. because this is small project
+    # We use email in frontend to make user use email as username
+    data =request.data
+    user = User.objects.create(
+        username=data['username'],
+        )    
+    user.set_password(data['password'])
+
+    user.save()
+    return Response(status=200)

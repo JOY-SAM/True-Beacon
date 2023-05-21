@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class NFT(models.Model):
@@ -9,3 +10,6 @@ class NFT(models.Model):
 
     def __str__(self) -> str:
         return self.instrument_name + "-" +  str(self.price)
+
+
+
